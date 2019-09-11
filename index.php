@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +14,14 @@
     <div class="container">
         <div class="row">
             <header class="col-md-12">
-
+                <?php include_once 'pages/functions.php' ?>
+                <?php include_once('pages/login_form.php')?>
             </header>
         </div>
         <div class="row">
             <nav class="col-md-12">
                 <?php include_once 'pages/menu.php'?>
-                <?php include_once 'pages/functions.php' ?>
+
             </nav>
         </div>
         <div class="row">
@@ -40,6 +42,6 @@
         </div>
     </div>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstarap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

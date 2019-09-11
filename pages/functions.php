@@ -18,9 +18,24 @@
             }
         }
         $password = md5($password);
-        $line = "$login:$password:$email\r\n";
+        $line = "$login:$password:$email";
         fputs($file, $line.PHP_EOL);
         fclose($file);
         return true;
+    }
+
+    function login($login, $password) {
+        global $users;
+        $file = fopen($users, 'r');
+        while($line=fgets($file)) {
+            $str = explode(':', $line);
+            if($str[0] == $login && md5($str[1])== $password) {
+                echo 'for Anatoliy!';
+                $_SESSION['user'] = $login;
+                header("Location: index.php");
+                return true;
+            }
+        }
+        return false;
     }
 ?>
