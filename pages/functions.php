@@ -24,18 +24,23 @@
         return true;
     }
 
-    function login($login, $password) {
+    function login($login, $password) 
+    {
         global $users;
+        if(file_exists($users)){
         $file = fopen($users, 'r');
         while($line=fgets($file)) {
             $str = explode(':', $line);
-            if($str[0] == $login && md5($str[1])== $password) {
+            if(trim($str[0]) == $login && trim(md5($str[1]))== $password) {
                 echo 'for Anatoliy!';
                 $_SESSION['user'] = $login;
                 header("Location: index.php");
                 return true;
             }
         }
+        }
         return false;
+        $_SESSION['user'] = $login;
+        return true;
     }
 ?>
