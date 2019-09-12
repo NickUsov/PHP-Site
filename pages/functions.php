@@ -31,10 +31,9 @@
         $file = fopen($users, 'r');
         while($line=fgets($file)) {
             $str = explode(':', $line);
-            if(trim($str[0]) == $login && trim(md5($str[1]))== $password) {
+            if(trim($str[0]) == $login && trim($str[1]) == md5( $password)) {
                 echo 'for Anatoliy!';
                 $_SESSION['user'] = $login;
-                header("Location: index.php");
                 return true;
             }
         }
